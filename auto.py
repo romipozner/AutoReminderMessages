@@ -116,7 +116,7 @@ def create_weekly_message(my_tasks,name,worker):
     my_tasks = my_tasks.sort_values(by=['day_order', my_tasks.columns[1]])
 
     # Start creating the message
-    message = f"Hi, this is  {name} These are your tasks for the upcoming week:\n\n"
+    message = f"Hi, this is {name}.\n These are your tasks for the upcoming week:\n\n"
     
     for index, row in my_tasks.iterrows():
         name_of_task = row[2].replace(" ","")
@@ -138,7 +138,7 @@ def create_weekly_message(my_tasks,name,worker):
     return message
 
 def create_tomorrow_message(day, my_tasks, name, worker):
-    message = f"Hi, this is {name}(:\n These are your tasks for tomorrow.: \n "
+    message = f"Hi, this is {name}(:\nThese are your tasks for tomorrow:\n "
     tasks = my_tasks[my_tasks['day'].str.replace(" ","").str.strip() == day]
     for index, row in tasks.iterrows():
         name_of_task = row[2].replace(" ","")
@@ -155,7 +155,7 @@ def create_tomorrow_message(day, my_tasks, name, worker):
             comment = row[10]
             message += "\n" + "*" + name_of_task + "*" + f" {str(from_)}-{str(to_)}({comment}) \n " 
         message += f"brief {brief}\n\n"
-    message +=  "Waiting for your approval"
+    message +=  "Waiting for your approval."
    
     return message
 
